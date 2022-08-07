@@ -1,7 +1,12 @@
 .logo {
     width: 230px;
+    padding: 50px 0;
 
     @media (min-width: 800px) {
         width: 260px;
     }
+}
+
+.wrapper {
+    text-align: center;
 }

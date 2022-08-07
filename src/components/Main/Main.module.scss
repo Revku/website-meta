@@ -1,0 +1,36 @@
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #fff;
+
+    @media (max-width: 800px) {
+        display: none;
+    }
+}
+
+.button {
+    padding: 13px 30px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #9916FF 0%, #424FC2 104.62%);
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.wrapper {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}

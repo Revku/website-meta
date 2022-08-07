@@ -1,0 +1,27 @@
+.label {
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 14px;
+}
+
+.input {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    display: block;
+    background-color: #28273D;
+    color: white;
+    outline: none;
+    resize: none;
+    margin-bottom: 30px;
+
+    &:focus, &:active {
+        background-color: #393853;
+    }
+}
+
+.wrapper {
+    width: 100%;
+}
