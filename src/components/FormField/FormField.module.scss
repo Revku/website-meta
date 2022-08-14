@@ -3,6 +3,7 @@
     font-weight: 600;
     display: block;
     margin-bottom: 14px;
+    margin-top: 30px;
 }
 
 .input {
@@ -15,7 +16,6 @@
     color: white;
     outline: none;
     resize: none;
-    margin-bottom: 30px;
 
     &:focus, &:active {
         background-color: #393853;

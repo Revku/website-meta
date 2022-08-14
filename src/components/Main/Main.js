@@ -10,9 +10,28 @@ const Main = () => {
     const [author, setAuthor] = React.useState('');
     const [ready, setReady] = React.useState(false);
     const [tags, setTags] = React.useState('');
+    const [errors, setErrors] = React.useState({});
     
     const generate = () => {
-        setTags(`
+        setErrors({});
+
+        if (!title) {
+            setErrors({...errors, title: true});
+            return;
+        }
+
+        if (!author) {
+            setErrors({...errors, author: true});
+            return;
+        }
+
+        if (!description) {
+            setErrors({...errors, description: true});
+            return;
+        }
+
+
+        const metaTags = `
             <!-- Primary -->
             <title>${title}</title>
             <meta name="title" content="${title}">
@@ -20,21 +39,22 @@ const Main = () => {
             <meta name="author" content="${author}">
             
             <!-- Facebook -->
-            <meta property="og:url" content="https://yoursite.com/">
+            <meta property="og:url" content="https://yoursite.com/"> <!-- ENTER YOUR SITE URL -->
             <meta property="og:title" content="${title}">
             <meta property="og:description" content="${description}">
             <meta name="og:author" content="${author}">
             <meta property="og:type" content="website">
-            <meta property="og:image" content="">
+            <meta property="og:image" content=""> <!-- ENTER IMAGE URL -->
             
             <!-- Twitter -->
-            <meta property="twitter:url" content="https://yoursite.com/">
+            <meta property="twitter:url" content="https://yoursite.com/"> <!-- ENTER YOUR SITE URL -->
             <meta property="twitter:title" content="${title}">
             <meta property="twitter:description" content="${description}">
             <meta property="twitter:card" content="summary_large_image">
-            <meta property="twitter:image" content="">
-        `);
-
+            <meta property="twitter:image" content=""> <!-- ENTER IMAGE URL -->
+        `;
+        
+        setTags(metaTags);
         setReady(true);
     }
 
@@ -51,6 +71,7 @@ const Main = () => {
                         value={title}
                         onChange={setTitle}
                     />
+                    {errors.title && <p className={styles.error}>Please enter a title</p>}
 
                     <FormField
                         label="Autor"
@@ -58,6 +79,7 @@ const Main = () => {
                         value={author}
                         onChange={setAuthor}
                     />
+                    {errors.author && <p className={styles.error}>Please enter an author</p>}
 
                     <FormField
                         label="Description"
@@ -66,6 +88,7 @@ const Main = () => {
                         onChange={setDescription}
                         isArea
                     />
+                    {errors.description && <p className={styles.error}>Please enter a description</p>}
 
                     <div className={styles.buttons}>
                         <button onClick={generate} className={styles.button}>Generate</button>
