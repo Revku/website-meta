@@ -4,9 +4,10 @@ import { CopyBlock, dracula } from "react-code-blocks";
 import Box from 'components/Box/Box'
 import styles from './Main.module.scss'
 import FormField from 'components/FormField/FormField'
-
-import { generateMetaTags } from './metatags';
 import Button from 'components/Button/Button';
+
+import { generateMetaTags } from 'utils/metatags';
+import { validateForm } from 'utils/validateForm';
 
 const Main = () => {
     const [title, setTitle] = React.useState('');
@@ -18,30 +19,12 @@ const Main = () => {
     const [errors, setErrors] = React.useState({});
     
     const generate = () => {
-        setErrors({});
-
-        if (!title) {
-            setErrors({...errors, title: true});
-            return;
+        if (validateForm(title, author, description, url) === true) {
+            setTags(generateMetaTags(title, description, author, url));
+            setReady(true);
+        } else {
+            setErrors(validateForm(title, author, description, url));
         }
-
-        if (!author) {
-            setErrors({...errors, author: true});
-            return;
-        }
-
-        if (!description) {
-            setErrors({...errors, description: true});
-            return;
-        }
-
-        if (!url) {
-            setErrors({...errors, url: true});
-            return;
-        }
-
-        setTags(generateMetaTags(title, description, author, url));
-        setReady(true);
     }
 
   return (
