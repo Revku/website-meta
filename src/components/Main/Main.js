@@ -11,6 +11,7 @@ const Main = () => {
     const [title, setTitle] = React.useState('');
     const [description, setDescription] = React.useState('');
     const [author, setAuthor] = React.useState('');
+    const [url, setUrl] = React.useState('');
     const [ready, setReady] = React.useState(false);
     const [tags, setTags] = React.useState('');
     const [errors, setErrors] = React.useState({});
@@ -33,7 +34,12 @@ const Main = () => {
             return;
         }
 
-        setTags(generateMetaTags(title, description, author));
+        if (!url) {
+            setErrors({...errors, url: true});
+            return;
+        }
+
+        setTags(generateMetaTags(title, description, author, url));
         setReady(true);
     }
 
@@ -53,12 +59,20 @@ const Main = () => {
                     {errors.title && <p className={styles.error}>Please enter a title</p>}
 
                     <FormField
-                        label="Autor"
+                        label="Author"
                         placeholder="@Revku"
                         value={author}
                         onChange={setAuthor}
                     />
                     {errors.author && <p className={styles.error}>Please enter an author</p>}
+
+                    <FormField
+                        label="Website URL"
+                        placeholder="https://yoursite.com"
+                        value={url}
+                        onChange={setUrl}
+                    />
+                    {errors.url && <p className={styles.error}>Please enter an url</p>}
 
                     <FormField
                         label="Description"

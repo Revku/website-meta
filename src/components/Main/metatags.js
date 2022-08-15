@@ -1,4 +1,4 @@
-export const generateMetaTags = (title, description, author) => {
+export const generateMetaTags = (title, description, author, url) => {
 
     return `<!-- Primary -->
 <title>${title}</title>
@@ -7,7 +7,7 @@ export const generateMetaTags = (title, description, author) => {
 <meta name="author" content="${author}">
 
 <!-- Facebook -->
-<meta property="og:url" content="https://yoursite.com/"> <!-- ENTER YOUR SITE URL -->
+<meta property="og:url" content="${url}">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${description}">
 <meta name="og:author" content="${author}">
@@ -15,7 +15,7 @@ export const generateMetaTags = (title, description, author) => {
 <meta property="og:image" content=""> <!-- ENTER IMAGE URL -->
 
 <!-- Twitter -->
-<meta property="twitter:url" content="https://yoursite.com/"> <!-- ENTER YOUR SITE URL -->
+<meta property="twitter:url" content="${url}">
 <meta property="twitter:title" content="${title}">
 <meta property="twitter:description" content="${description}">
 <meta property="twitter:card" content="summary_large_image">
