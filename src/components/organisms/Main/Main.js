@@ -1,10 +1,10 @@
 import React from 'react'
 import { CopyBlock, dracula } from "react-code-blocks";
 
-import Box from 'components/Box/Box'
+import Box from 'components/organisms/Box/Box'
 import styles from './Main.module.scss'
-import FormField from 'components/FormField/FormField'
-import Button from 'components/Button/Button';
+import FormField from 'components/molecules/FormField/FormField'
+import Button from 'components/atoms/Button/Button';
 
 import { generateMetaTags } from 'utils/metatags';
 import { validateForm } from 'utils/validateForm';
@@ -25,6 +25,15 @@ const Main = () => {
         } else {
             setErrors(validateForm(title, author, description, url));
         }
+    }
+
+    const backToHome = () => {
+        setReady(false);
+        setTitle('');
+        setDescription('');
+        setAuthor('');
+        setUrl('');
+        setErrors({});
     }
 
   return (
@@ -82,7 +91,7 @@ const Main = () => {
                         codeBlock
                     />
                      <div className={styles.buttons}>
-                        <Button onClick={() => setReady(false)}>Generate another</Button>
+                        <Button onClick={backToHome}>Generate another</Button>
                     </div>
                 </div>
             )}
