@@ -6,6 +6,7 @@ import styles from './Main.module.scss'
 import FormField from 'components/FormField/FormField'
 
 import { generateMetaTags } from './metatags';
+import Button from 'components/Button/Button';
 
 const Main = () => {
     const [title, setTitle] = React.useState('');
@@ -84,7 +85,7 @@ const Main = () => {
                     {errors.description && <p className={styles.error}>Please enter a description</p>}
 
                     <div className={styles.buttons}>
-                        <button onClick={generate} className={styles.button}>Generate</button>
+                        <Button onClick={generate}>Generate</Button>
                     </div>
                 </div>
             ) : (
@@ -97,6 +98,9 @@ const Main = () => {
                         wrapLines
                         codeBlock
                     />
+                     <div className={styles.buttons}>
+                        <Button onClick={() => setReady(false)}>Generate another</Button>
+                    </div>
                 </div>
             )}
         </Box>
