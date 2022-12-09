@@ -11,7 +11,7 @@ Website Meta is free apliacation where you can generate meta tags for your websi
 ## 👋 Getting Started
 1. Clone the repository
 ```
-git clone https://github.com/Revku/sleep-calulator
+git clone https://github.com/Revku/website-meta
 ```
 2. Install all depencencies
 ```
